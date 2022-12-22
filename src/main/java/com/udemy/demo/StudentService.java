@@ -6,4 +6,5 @@ public interface StudentService {
 
     public List<Student> getAllStudent();
 
+    void addNewStudent(Student student);
 }

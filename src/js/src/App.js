@@ -5,6 +5,7 @@ import { Avatar, Table, Spin,Modal} from 'antd';
 import {Icon,LoadingOutlined} from '@ant-design/icons';
 import Container from './Container';
 import Footer from './Footer';
+import AddStudentForm from './forms/AddStudentFrom';
 
 
 const getIndicatorIcon = () =>  <LoadingOutlined style={{ fontSize: 24 }} spin />;
@@ -96,7 +97,9 @@ class App extends Component{
 
           return( 
                   <Container>
-                    <Table dataSource={students} 
+                    <Table  
+                          style={{marginBottom:'100px'}}
+                          dataSource={students} 
                           columns={columns}
                           pagination={false}
                           rowKey='studentId' />
@@ -105,8 +108,9 @@ class App extends Component{
                         title='Add new student'
                         open={isAddStudentModalVisible}
                         onOk={this.closeAddStudentModal} onCancel={this.closeAddStudentModal}
-                        width={1000}> 
-                        <h1>Hello Modal width Antd</h1>
+                        width={1000}>                        
+                        <AddStudentForm  onSuccess={() => {this.closeAddStudentModal();
+                        this.fetchStudents()}}/>
                       </Modal>
                           
 

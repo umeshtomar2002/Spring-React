@@ -24,6 +24,8 @@ public class StudentServiceImpl implements StudentService{
         //        new Student(UUID.randomUUID(),"umesh_1","singh_1","ums1@gmail.com", Student.Gender.MALE));
     }
 
+
+
     private RowMapper<Student> mapStudentFromDb() {
         return (resultSet,i) -> {
             return new Student(UUID.fromString(resultSet.getString("student_id")),
@@ -32,5 +34,18 @@ public class StudentServiceImpl implements StudentService{
                     resultSet.getString("email"),
                     Student.Gender.valueOf(resultSet.getString("gender").toUpperCase()));
         };
+    }
+
+    @Override
+    public void addNewStudent(Student student) {
+        String sql = "INSERT INTO student(student_id,first_name,last_name,email,gender)" +
+                "values (?,?,?,?,?)";
+
+       int update = jdbcTemplate.update(sql,UUID.randomUUID(),
+                    student.getFirstName(),
+                    student.getLastName(),
+                    student.getEmail(),
+                    student.getGender().name().toUpperCase());
+
     }
 }

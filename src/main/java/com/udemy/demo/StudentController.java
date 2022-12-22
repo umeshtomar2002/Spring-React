@@ -1,9 +1,7 @@
 package com.udemy.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,9 +13,14 @@ public class StudentController {
 
     @Autowired StudentService studentService;
 
-    @GetMapping
+    @GetMapping("/allStudents")
     public List<Student> getAllStudents() throws InterruptedException {
         return studentService.getAllStudent();
     }
 
+    @PostMapping("/saveStudent")
+    public void addNewStudent(@RequestBody Student student){
+        studentService.addNewStudent(student);
+        System.out.println(student);
+    }
 }

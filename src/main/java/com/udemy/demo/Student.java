@@ -1,7 +1,9 @@
 package com.udemy.demo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sun.istack.internal.NotNull;
 
+import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 public class Student {
@@ -9,12 +11,16 @@ public class Student {
     @JsonProperty("studentId")
     private final UUID studentId;
     @JsonProperty("firstName")
+    @NotBlank
     private final String firstName;
     @JsonProperty("lastName")
+    @NotBlank
     private final String lastName;
     @JsonProperty("email")
+    @NotBlank
     private final String email;
     @JsonProperty("gender")
+    @NotNull
     private final Gender gender;
 
     public Student(UUID studentId, String firstName, String lastName, String email, Gender gender) {

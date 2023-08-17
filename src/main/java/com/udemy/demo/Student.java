@@ -1,9 +1,11 @@
 package com.udemy.demo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.istack.internal.NotNull;
+
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import java.util.UUID;
 
 public class Student {

@@ -6,7 +6,7 @@ import {Icon,LoadingOutlined} from '@ant-design/icons';
 import Container from './Container';
 import Footer from './Footer';
 import AddStudentForm from './forms/AddStudentFrom';
-import { errorNotification } from './Notification'; 
+//import { errorNotification } from './Notification'; 
 
 
 const getIndicatorIcon = () =>  <LoadingOutlined style={{ fontSize: 24 }} spin />;
@@ -45,7 +45,7 @@ class App extends Component{
     }))
     .catch(error =>{
       console.log(error.error.error);
-      errorNotification(error.error.message,error.error.error);
+      //errorNotification(error.error.message,error.error.error);
       this.setState({
         isFetching: false
       });
